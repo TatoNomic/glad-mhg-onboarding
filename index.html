@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLAD MHG Site Onboarding Portal</title>
+    <title>GLAD MHG Site Onboarding Portal & Protocols</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         .tier-card { transition: all 0.3s ease; }
         .tier-card:hover { transform: translateY(-2px); }
+        .hidden-view { display: none !important; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800 antialiased">
 
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-xs">
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showView('main-dashboard')">
                 <div class="bg-blue-600 text-white p-2 rounded-lg font-bold tracking-wider text-sm shadow-md">GLAD</div>
                 <div>
                     <h1 class="text-xl font-bold text-gray-900 tracking-tight">MHG Onboarding Portal</h1>
@@ -27,7 +28,7 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+    <div id="main-dashboard" class="max-w-6xl mx-auto px-4 py-8 space-y-12">
         
         <section class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-2xl p-6 sm:p-10 shadow-lg relative overflow-hidden">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_50%)]"></div>
@@ -98,14 +99,12 @@
         </section>
 
         <section class="space-y-4">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                <div>
-                    <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
-                        <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xs font-bold">2</span>
-                        Protocol Framework Reference Matrix
-                    </h3>
-                    <p class="text-sm text-gray-500">Standard configurations mapping operational rules.</p>
-                </div>
+            <div>
+                <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xs font-bold">2</span>
+                    Protocol Framework Reference Matrix
+                </h3>
+                <p class="text-sm text-gray-500">Standard configurations mapping operational setup rules across sites.</p>
             </div>
 
             <div class="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-xs">
@@ -117,97 +116,152 @@
                             <th class="p-4 sm:p-5 text-center">Centrifugation</th>
                             <th class="p-4 sm:p-5 text-center">Processing/Storage</th>
                             <th class="p-4 sm:p-5 text-center">PBMC Isolation</th>
-                            <th class="p-4 sm:p-5">Logistics Mode</th>
+                            <th class="p-4 sm:p-5 text-right">Action</th>
                         </tr>
                     </thead>
                     <tbody class="text-sm divide-y divide-gray-100 font-medium">
                         <tr id="row-tier1" class="transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-gray-900">Tier 1: Basic</td>
+                            <td class="p-4 sm:p-5 font-bold text-gray-900">Tier 1: Basic Site</td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-rose-100 text-rose-700 h-6 w-6 rounded-full text-xs">✕</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-rose-100 text-rose-700 h-6 w-6 rounded-full text-xs">✕</span></td>
-                            <td class="p-4 sm:p-5 text-gray-600 font-normal">Centrifuge locally ➔ Immediate Royal Mail return to KCL</td>
+                            <td class="p-4 sm:p-5 text-right"><button onclick="showView('view-tier1')" class="text-xs bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-700 px-3 py-1.5 rounded-md transition-colors cursor-pointer">Open Protocol →</button></td>
                         </tr>
                         <tr id="row-tier2" class="transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-gray-900">Tier 2: Intermediate</td>
+                            <td class="p-4 sm:p-5 font-bold text-gray-900">Tier 2: Intermediate Site</td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-rose-100 text-rose-700 h-6 w-6 rounded-full text-xs">✕</span></td>
-                            <td class="p-4 sm:p-5 text-gray-600 font-normal">Batched local freezer storage; Dry ice shipping to KCL</td>
+                            <td class="p-4 sm:p-5 text-right"><button onclick="showView('view-tier2')" class="text-xs bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-700 px-3 py-1.5 rounded-md transition-colors cursor-pointer">Open Protocol →</button></td>
                         </tr>
                         <tr id="row-tier3" class="transition-colors">
-                            <td class="p-4 sm:p-5 font-bold text-gray-900">Tier 3: Advanced</td>
+                            <td class="p-4 sm:p-5 font-bold text-gray-900">Tier 3: Advanced Site</td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
                             <td class="p-4 sm:p-5 text-center"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 h-6 w-6 rounded-full text-xs">✓</span></td>
-                            <td class="p-4 sm:p-5 text-gray-600 font-normal">Batched local freezer storage; Dry ice shipping to KCL</td>
+                            <td class="p-4 sm:p-5 text-right"><button onclick="showView('view-tier3')" class="text-xs bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-700 px-3 py-1.5 rounded-md transition-colors cursor-pointer">Open Protocol →</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
+    </div>
 
-        <section class="space-y-4">
-            <div>
-                <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
-                    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xs font-bold">3</span>
-                    Logistics Pathways & Pipeline Management
-                </h3>
-                <p class="text-sm text-gray-500">Review logistics pipelines based on site setup rules.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 shadow-xs flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start">
-                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-sm uppercase tracking-wide">Postal Pathway (Tier 1)</span>
-                            <div class="text-xs text-gray-400 font-medium">Frequency: Immediate Daily</div>
-                        </div>
-                        <h4 class="text-base font-bold text-gray-900 mt-3 mb-2">Royal Mail Post-Centrifugation Return</h4>
-                        <p class="text-xs text-gray-600 leading-relaxed">
-                            Tier 1 sites possess centrifugation capabilities to spin down blood collections immediately post-draw. However, because long-term freezer storage is unavailable, spun samples must be packaged into pre-paid <strong>Royal Mail SafeBox</strong> containers and posted back to KCL on the same day.
-                        </p>
-                    </div>
-                    <div class="mt-6 border-t border-gray-100 pt-4 flex items-center gap-3 text-xs text-gray-500">
-                        <span class="font-semibold text-gray-700">Required:</span> Local Centrifuge • Royal Mail SafeBox Packing Materials
-                    </div>
+    <div id="view-tier1" class="hidden-view max-w-4xl mx-auto px-4 py-8 space-y-6">
+        <button onclick="showView('main-dashboard')" class="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 cursor-pointer">← Back to Tier Finder</button>
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs space-y-6">
+            <div class="border-b border-gray-100 pb-4 flex justify-between items-start">
+                <div>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-sm uppercase tracking-wide">SOP-MHG-T1</span>
+                    <h2 class="text-2xl font-extrabold text-gray-900 mt-2">Tier 1: Basic Site Protocol & Logistics</h2>
                 </div>
+                <button onclick="window.print()" class="text-xs font-bold border border-gray-300 px-3 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer">Print SOP</button>
+            </div>
+            
+            <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-gray-900 text-base">1. Clinical Workflow Steps</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Perform standard venipuncture following GLAD sample kit configurations.</li>
+                    <li><strong>Centrifugation Requirement:</strong> Spin blood collection tubes immediately post-draw using standard local laboratory parameters to separate target fluid pathways.</li>
+                    <li>Do not leave raw samples ambient or unspun on lab racks.</li>
+                </ul>
 
-                <div class="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 shadow-xs flex flex-col justify-between">
+                <h3 class="font-bold text-gray-900 text-base mt-6">2. Logistics & Daily Shipping Pathway</h3>
+                <p>Because Tier 1 sites do not have access to ultra-low freezer storage setups, processed tubes cannot be batched locally on site.</p>
+                <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl text-amber-900 font-medium flex gap-3 items-start">
+                    <span class="text-lg">📦</span>
                     <div>
-                        <div class="flex justify-between items-start">
-                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded-sm uppercase tracking-wide">Cold Chain Pathway (Tiers 2 & 3)</span>
-                            <div class="text-xs text-gray-400 font-medium">Frequency: Threshold Batched</div>
-                        </div>
-                        <h4 class="text-base font-bold text-gray-900 mt-3 mb-2">Dry Ice Batch Shipping Pipeline</h4>
-                        <p class="text-xs text-gray-600 leading-relaxed">
-                            Tier 2 and Tier 3 facilities centrifuge, process, and completely freeze derivatives locally. Samples accumulate inside designated site freezers. Once your specific repository reaches its designated accumulation target, a specialized medical cold-chain courier is dispatched to move items on dry ice.
-                        </p>
-                    </div>
-                    
-                    <div class="mt-4 bg-gray-50 border border-gray-200 p-3 rounded-lg space-y-3">
-                        <div class="flex justify-between items-center text-xs">
-                            <span class="font-bold text-gray-700">Interactive Batch Monitor:</span>
-                            <span id="batch-counter" class="bg-blue-600 text-white font-mono px-2 py-0.5 rounded-sm font-bold">1 sample</span>
-                        </div>
-                        <input id="batch-slider" type="range" min="1" max="12" value="1" oninput="updateSimulation()" class="w-full accent-blue-600 h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                        <div id="simulation-status" class="text-[11px] font-medium p-1.5 rounded-xs text-center transition-colors">
-                            </div>
+                        <p class="font-bold">Royal Mail Daily Post Pipeline:</p>
+                        <p class="text-xs text-amber-800 font-normal mt-0.5">Pack freshly centrifuged specimens directly into the pre-paid, clinical-grade Royal Mail SafeBox container supplied in your kit. Ship to King's College London (KCL) central lab intake on the exact same afternoon.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-    </main>
+    <div id="view-tier2" class="hidden-view max-w-4xl mx-auto px-4 py-8 space-y-6">
+        <button onclick="showView('main-dashboard')" class="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 cursor-pointer">← Back to Tier Finder</button>
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs space-y-6">
+            <div class="border-b border-gray-100 pb-4 flex justify-between items-start">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-sm uppercase tracking-wide">SOP-MHG-T2</span>
+                    <h2 class="text-2xl font-extrabold text-gray-900 mt-2">Tier 2: Intermediate Site Protocol & Logistics</h2>
+                </div>
+                <button onclick="window.print()" class="text-xs font-bold border border-gray-300 px-3 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer">Print SOP</button>
+            </div>
+            
+            <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-gray-900 text-base">1. Clinical Laboratory Processing</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Execute target venipuncture collections as instructed in study pack materials.</li>
+                    <li>Centrifuge raw tubes immediately to separate plasma/serum components.</li>
+                    <li><strong>Processing/Storage Requirement:</strong> Aliquot fluids into matrix storage tubes, label via standard barcodes, and immediately transfer into site freezers at -20°C or -80°C.</li>
+                </ul>
+
+                <h3 class="font-bold text-gray-900 text-base mt-6">2. Cold-Chain Logistics & Batch Rules</h3>
+                <p>Samples must be preserved in a continuous frozen matrix locally. Do not post frozen derivatives via standard mail channels.</p>
+                <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-xl text-indigo-900 font-medium flex gap-3 items-start">
+                    <span class="text-lg">❄️</span>
+                    <div>
+                        <p class="font-bold">Dry Ice Courier Shipping Rule:</p>
+                        <p class="text-xs text-indigo-800 font-normal mt-0.5">Accumulate aliquots continuously within your local repository. Once your specific repository milestone achieves its designated <strong>minimum of 10 samples</strong>, notify coordinate support to dispatch a specialized medical cold-chain courier to move materials to KCL on dry ice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-tier3" class="hidden-view max-w-4xl mx-auto px-4 py-8 space-y-6">
+        <button onclick="showView('main-dashboard')" class="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 cursor-pointer">← Back to Tier Finder</button>
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs space-y-6">
+            <div class="border-b border-gray-100 pb-4 flex justify-between items-start">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded-sm uppercase tracking-wide">SOP-MHG-T3</span>
+                    <h2 class="text-2xl font-extrabold text-gray-900 mt-2">Tier 3: Advanced Site Protocol & Logistics</h2>
+                </div>
+                <button onclick="window.print()" class="text-xs font-bold border border-gray-300 px-3 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer">Print SOP</button>
+            </div>
+            
+            <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-gray-900 text-base">1. Cellular Isolation Requirements (PBMC)</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Perform phlebotomy and spin down matrices using specified parameters.</li>
+                    <li><strong>Advanced PBMC Requirement:</strong> Immediately transfer to sterile laminar flow isolation hoods. Process and isolate live Peripheral Blood Mononuclear Cells (PBMCs) following exact study density gradient separation checklists.</li>
+                    <li>Cryopreserve fractions step-down style and anchor securely into designated -80°C biorepository slots.</li>
+                </ul>
+
+                <h3 class="font-bold text-gray-900 text-base mt-6">2. Advanced Cold-Chain Batch Shipping</h3>
+                <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-xl text-indigo-900 font-medium flex gap-3 items-start">
+                    <span class="text-lg">🧊</span>
+                    <div>
+                        <p class="font-bold">Dry Ice Courier Logistics Workflow:</p>
+                        <p class="text-xs text-indigo-800 font-normal mt-0.5">To preserve cellular viability across freezing cycles, all samples must remain at critical sub-zero thresholds. Batch samples locally on site and trigger specialized cold-chain courier transfer over to KCL on deep dry ice matrices upon achieving the 10-sample collection threshold.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-white border-t border-gray-200 mt-20 text-center py-6 text-xs text-gray-400 font-medium">
         GLAD MHG Framework • Developed for Research Consortium Operations
     </footer>
 
     <script>
+        function showView(viewId) {
+            // Hide all views first
+            document.getElementById('main-dashboard').classList.add('hidden-view');
+            document.getElementById('view-tier1').classList.add('hidden-view');
+            document.getElementById('view-tier2').classList.add('hidden-view');
+            document.getElementById('view-tier3').classList.add('hidden-view');
+            
+            // Un-hide the chosen target view
+            document.getElementById(viewId).classList.remove('hidden-view');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function evaluateTier() {
             const centrifuge = document.getElementById('q-centrifuge').value;
             const storage = document.getElementById('q-storage').value;
@@ -218,13 +272,13 @@
             const r2 = document.getElementById('row-tier2');
             const r3 = document.getElementById('row-tier3');
 
-            // Reset table highlighting states
             [r1, r2, r3].forEach(r => r.className = "transition-colors text-gray-700");
 
             let tierTitle = "";
             let tierDescription = "";
             let tierClass = "";
             let badgeClass = "";
+            let targetView = "";
 
             if (centrifuge === 'no') {
                 tierTitle = "Ineligible Site Profile";
@@ -233,58 +287,50 @@
                 badgeClass = "bg-rose-600 text-white";
             } else if (pbmc === 'yes' && storage === 'yes') {
                 tierTitle = "Tier 3: Advanced Site Configuration Detected";
-                tierDescription = "Your facility accommodates phlebotomy, centrifugation, advanced cold storage, and specialized PBMC isolation. Shipments are batched and transferred via dry ice transport to KCL.";
+                tierDescription = "Your facility accommodates phlebotomy, centrifugation, advanced cold storage, and specialized PBMC isolation.";
                 tierClass = "bg-indigo-50 border-indigo-200 text-indigo-900";
                 badgeClass = "bg-indigo-700 text-white";
                 r3.className = "bg-indigo-50/70 font-semibold text-indigo-950 border-l-4 border-indigo-600";
+                targetView = "view-tier3";
             } else if (storage === 'yes') {
                 tierTitle = "Tier 2: Intermediate Site Configuration Detected";
-                tierDescription = "Your site is equipped to centrifuge and store frozen samples locally, but skips PBMC steps. Samples are accumulated locally and dispatched on dry ice once batch thresholds are reached.";
+                tierDescription = "Your site is equipped to centrifuge and store frozen samples locally, but skips PBMC steps.";
                 tierClass = "bg-emerald-50 border-emerald-200 text-emerald-900";
                 badgeClass = "bg-emerald-700 text-white";
                 r2.className = "bg-emerald-50/70 font-semibold text-emerald-950 border-l-4 border-emerald-600";
+                targetView = "view-tier2";
             } else {
                 tierTitle = "Tier 1: Basic Site Configuration Detected";
-                tierDescription = "Your site performs blood collections and spins samples down locally, but has no frozen storage. Package spun materials into provided pre-paid SafeBoxes immediately for daily Royal Mail delivery to KCL.";
+                tierDescription = "Your site performs blood collections and spins samples down locally, but has no frozen storage capacity.";
                 tierClass = "bg-amber-50 border-amber-200 text-amber-900";
                 badgeClass = "bg-amber-600 text-white";
                 r1.className = "bg-amber-50/70 font-semibold text-amber-950 border-l-4 border-amber-500";
+                targetView = "view-tier1";
             }
 
             resultDiv.className = `mt-6 p-5 rounded-xl border transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${tierClass}`;
-            resultDiv.innerHTML = `
-                <div class="space-y-1">
-                    <h4 class="font-bold text-base flex items-center gap-2">
-                        <span class="text-xs font-bold uppercase px-2 py-0.5 rounded-sm shadow-xs ${badgeClass}">Status</span>
-                        ${tierTitle}
-                    </h4>
-                    <p class="text-xs opacity-90 max-w-2xl leading-relaxed">${tierDescription}</p>
-                </div>
-                <button onclick="window.print()" class="shrink-0 bg-white hover:bg-gray-100 text-gray-800 font-bold text-xs py-2 px-3 border border-gray-300 rounded-lg shadow-xs transition-colors cursor-pointer">
-                    Print Protocol SOP
-                </button>
-            `;
-        }
-
-        function updateSimulation() {
-            const val = document.getElementById('batch-slider').value;
-            const counter = document.getElementById('batch-counter');
-            const statusBox = document.getElementById('simulation-status');
-
-            counter.innerText = `${val} ${val == 1 ? 'sample' : 'samples'}`;
-
-            if (val >= 10) {
-                statusBox.className = "text-[11px] font-bold p-1.5 rounded-xs text-center bg-emerald-100 text-emerald-800 border border-emerald-200 animate-pulse";
-                statusBox.innerText = `🚨 Shipment Threshold Reached! Dispatching via Dry Ice Courier to KCL.`;
+            
+            if(centrifuge === 'no') {
+                resultDiv.innerHTML = `
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-base flex items-center gap-2"><span class="text-xs font-bold uppercase px-2 py-0.5 rounded-sm ${badgeClass}">Status</span>${tierTitle}</h4>
+                        <p class="text-xs opacity-90 max-w-2xl">${tierDescription}</p>
+                    </div>`;
             } else {
-                statusBox.className = "text-[11px] font-medium p-1.5 rounded-xs text-center bg-amber-50 text-amber-700 border border-amber-100";
-                statusBox.innerText = `Storing Locally (${val}/10 collected). Awaiting batch minimum.`;
+                resultDiv.innerHTML = `
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-base flex items-center gap-2"><span class="text-xs font-bold uppercase px-2 py-0.5 rounded-sm ${badgeClass}">Status</span>${tierTitle}</h4>
+                        <p class="text-xs opacity-90 max-w-2xl">${tierDescription}</p>
+                    </div>
+                    <button onclick="showView('${targetView}')" class="shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2.5 px-4 rounded-lg shadow-sm transition-colors cursor-pointer">
+                        View Protocol SOP →
+                    </button>
+                `;
             }
         }
 
         window.onload = function() {
             evaluateTier();
-            updateSimulation();
         }
     </script>
 </body>
