@@ -212,7 +212,7 @@
                         <input type="radio" name="lane-select" id="radio-t1" onchange="switchLane('Tier 1')" class="h-4 w-4 text-indigo-600 border-slate-300 focus:ring-indigo-500">
                         <div class="text-xs">
                             <span class="block font-bold text-slate-800 dark:text-slate-200">Tier 1: Basic Operational Mode</span>
-                            <span class="text-slate-400">Spin Down ➔ Daily Royal Mail Return</span>
+                            <span class="text-slate-400">Processes 3 Tubes Total (Daily Post)</span>
                         </div>
                     </label>
 
@@ -220,7 +220,7 @@
                         <input type="radio" name="lane-select" id="radio-t2" onchange="switchLane('Tier 2')" class="h-4 w-4 text-indigo-600 border-slate-300 focus:ring-indigo-500">
                         <div class="text-xs">
                             <span class="block font-bold text-slate-800 dark:text-slate-200">Tier 2: Intermediate Storage Mode</span>
-                            <span class="text-slate-400">Full Aliquot Matrix ➔ Archive at $-80^\circ\text{C}$</span>
+                            <span class="text-slate-400">Processes 5 Tubes Total ($-80^\circ\text{C}$ Freezer Hold)</span>
                         </div>
                     </label>
 
@@ -228,7 +228,7 @@
                         <input type="radio" name="lane-select" id="radio-t3" onchange="switchLane('Tier 3')" class="h-4 w-4 text-indigo-600 border-slate-300 focus:ring-indigo-500">
                         <div class="text-xs">
                             <span class="block font-bold text-slate-800 dark:text-slate-200">Tier 3: Cell Separation Hub</span>
-                            <span class="text-slate-400">PBMC Cryopreservation Phase Setup</span>
+                            <span class="text-slate-400">Processes 5 Tubes Total + PBMC Density Fractions</span>
                         </div>
                     </label>
                 </div>
@@ -256,6 +256,11 @@
                 </div>
 
                 <div class="bg-slate-50 dark:bg-slate-950/60 p-3 rounded-xl border border-slate-100 dark:border-slate-800/80 space-y-2 text-[11px]">
+                    <div class="flex justify-between font-medium">
+                        <span id="label-total-drawn" class="text-slate-700 dark:text-slate-300">Total Blood Tubes Drawn:</span>
+                        <span id="calc-drawn-count" class="font-bold text-indigo-600 dark:text-indigo-400">3 tubes</span>
+                    </div>
+                    <hr class="border-slate-200 dark:border-slate-800 border-dashed my-1">
                     <div class="flex justify-between">
                         <span class="text-slate-500">Whole EDTA Blood Tubes (DNA):</span>
                         <span id="calc-edta" class="font-bold text-slate-800 dark:text-white">2 tubes</span>
@@ -264,16 +269,16 @@
                         <span class="text-slate-500">BD P100 Plasma Supernatant:</span>
                         <span id="calc-p100" class="font-bold text-slate-800 dark:text-white">8 vials</span>
                     </div>
-                    <div id="calc-extra-edta-row" class="flex justify-between border-t border-dashed border-slate-200 dark:border-slate-800/80 pt-1">
-                        <span class="text-slate-500 text-brand-edta font-semibold">Tier 2/3 Secondary EDTA Plasma:</span>
+                    <div id="calc-extra-edta-row" class="flex justify-between">
+                        <span class="text-slate-500 text-brand-edta">Secondary EDTA Plasma:</span>
                         <span id="calc-extra-edta" class="font-bold text-brand-edta">8 vials</span>
                     </div>
                     <div id="calc-sst-row" class="flex justify-between">
-                        <span class="text-slate-500 text-brand-sst font-semibold">Tier 2/3 Clotted SST Serum:</span>
+                        <span class="text-slate-500 text-brand-sst">Clotted SST Serum:</span>
                         <span id="calc-sst" class="font-bold text-brand-sst">8 vials</span>
                     </div>
                     <div class="flex justify-between border-t border-slate-200 dark:border-slate-800/80 pt-1.5 font-bold">
-                        <span class="text-slate-700 dark:text-slate-300">Total FluidX Vials Needed:</span>
+                        <span class="text-slate-700 dark:text-slate-300">Total Cryovials To Archive:</span>
                         <span id="calc-total" class="text-indigo-600 dark:text-indigo-400">24 vials</span>
                     </div>
                 </div>
@@ -316,10 +321,10 @@
             <section id="tier-1-card" class="print-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-all duration-300 flex flex-col">
                 <div class="bg-slate-100 dark:bg-slate-800/70 p-5 border-b border-slate-200 dark:border-slate-800">
                     <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Level 1: Minimal</span>
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200">Basic Processing Only</span>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Configuration Stack</span>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200">3 Tubes Total</span>
                     </div>
-                    <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1">Tier 1 Site Workflow</h3>
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1">Tier 1 Full Profile</h3>
                     <div class="mt-2.5 flex flex-wrap gap-1">
                         <span class="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 dark:text-emerald-400 px-2 py-0.5 rounded-md border border-emerald-500/20">Centrifuge ✅</span>
                         <span class="inline-flex items-center gap-1 text-[10px] font-medium text-rose-700 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400 px-2 py-0.5 rounded-md border border-rose-500/20">No Freezer ✕</span>
@@ -328,25 +333,25 @@
 
                 <div class="p-6 flex-1 space-y-6">
                     <div>
-                        <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">Workflow Tube Allocation</h4>
+                        <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">On-Site Manifest List</h4>
                         <div class="space-y-3">
                             <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-150 dark:border-slate-850">
                                 <div class="flex-1">
                                     <div class="flex justify-between items-start">
-                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">2x EDTA (10 mL)</p>
-                                        <span class="text-[9px] font-bold text-brand-edta bg-purple-50 dark:bg-purple-950/40 px-1.5 py-0.5 rounded border border-purple-200 dark:border-purple-900/60">DNA Tube</span>
+                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">2x EDTA Tubes (10 mL)</p>
+                                        <span class="text-[9px] font-bold text-brand-edta bg-purple-50 dark:bg-purple-950/40 px-1.5 py-0.5 rounded border border-purple-200 dark:border-purple-900/60">Tube 1 & 2</span>
                                     </div>
-                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Spin whole blood collection tube immediately. **Do not aliquot or transfer supernatant**. Keep intact.</p>
+                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Spin blood collection tube immediately. **Do not aliquot or open raw cap**. Keep whole blood packed intact.</p>
                                 </div>
                             </div>
 
                             <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-150 dark:border-slate-850">
                                 <div class="flex-1">
                                     <div class="flex justify-between items-start">
-                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">1x BD P100 Tube</p>
-                                        <span class="text-[9px] font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded border border-slate-350">Plasma</span>
+                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">1x BD P100 Tube (8.5 mL)</p>
+                                        <span class="text-[9px] font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded border border-slate-350">Tube 3</span>
                                     </div>
-                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Centrifuge and transfer isolated plasma fraction evenly across **$8 \times 500\ \mu\text{L}$** standard vials.</p>
+                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Centrifuge and transfer isolated plasma supernatant fraction evenly across **$8 \times 500\ \mu\text{L}$** standard vials.</p>
                                 </div>
                             </div>
                         </div>
@@ -358,7 +363,7 @@
                             <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Draw blood inputs (2x Purple EDTA, 1x Gray BD P100).</span></li>
                             <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Centrifuge together following baseline configuration targets.</span></li>
                             <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Pipette P100 supernatant matrix across 8 separate cryovials.</span></li>
-                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span class="text-rose-600 dark:text-rose-400 font-bold">Pack into Royal Mail SafeBoxes and post same-day. Local freezer retention strictly prohibited.</span></li>
+                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span class="text-rose-600 dark:text-rose-400 font-bold">Pack all components into Royal Mail SafeBoxes and post same-day. Local freezer retention strictly prohibited.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -367,40 +372,54 @@
             <section id="tier-2-card" class="print-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-all duration-300 flex flex-col">
                 <div class="bg-indigo-50 dark:bg-indigo-950/40 p-5 border-b border-indigo-100 dark:border-indigo-900/60">
                     <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Level 2: Intermediate</span>
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-600 text-white">Full Aliquoting / -80°C</span>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Configuration Stack</span>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-600 text-white">5 Tubes Total</span>
                     </div>
-                    <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1">Tier 2 Site Workflow</h3>
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1">Tier 2 Full Profile</h3>
                     <div class="mt-2.5 flex flex-wrap gap-1">
                         <span class="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 dark:text-emerald-400 px-2 py-0.5 rounded-md border border-emerald-500/20">Centrifuge ✅</span>
-                        <span class="inline-flex items-center gap-1 text-[10px] font-medium text-indigo-700 bg-indigo-50 dark:bg-indigo-950 dark:text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-500/20">$-80^\circ\text{C}$ Cold Archive</span>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-medium text-indigo-700 bg-indigo-50 dark:bg-indigo-950 dark:text-indigo-300 px-2 py-0.5 rounded-md border border-indigo-500/20">$-80^\circ\text{C}$ Freezer Hold</span>
                     </div>
                 </div>
 
                 <div class="p-6 flex-1 space-y-6">
                     <div>
-                        <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">T1 Tube Stack + Additions</h4>
+                        <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">On-Site Manifest List</h4>
                         <div class="space-y-3">
-                            <div class="p-2 bg-slate-50 dark:bg-slate-950 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl text-[10px] flex justify-between items-center text-slate-400 font-bold">
-                                <span>INCLUDES T1 SUB-STACK RULES</span>
-                                <span class="text-indigo-500">✓ Active</span>
+                            <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/60">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">2x Whole EDTA Tubes (10 mL)</p>
+                                        <span class="text-[9px] font-bold text-brand-edta bg-purple-50 dark:bg-purple-950/40 px-1.5 py-0.5 rounded border border-purple-200">Tube 1 & 2</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Spin and keep whole blood packed intact. **Do not decant metadata lanes**.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/60">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">1x BD P100 Tube (8.5 mL)</p>
+                                        <span class="text-[9px] font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded border border-slate-350">Tube 3</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Spin, recover plasma supernatant fraction into **$8 \times 500\ \mu\text{L}$** FluidX 2D matrix cryovials.</p>
+                                </div>
                             </div>
                             <div class="flex items-start gap-3 p-3 bg-indigo-50/30 dark:bg-indigo-950/10 rounded-xl border border-indigo-100/40">
                                 <div class="flex-1">
                                     <div class="flex justify-between items-start">
-                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">1x Secondary EDTA Plasma</p>
-                                        <span class="text-[9px] font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 px-1.5 py-0.5 rounded border border-indigo-200 dark:border-indigo-900">Secondary Plasma</span>
+                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">1x Secondary EDTA Tube (10 mL)</p>
+                                        <span class="text-[9px] font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 px-1.5 py-0.5 rounded border border-indigo-200 dark:border-indigo-900">Tube 4</span>
                                     </div>
-                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Spin, recover plasma supernatant fraction into **$8 \times 500\ \mu\text{L}$** FluidX 2D matrix cryovials.</p>
+                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Spin, split plasma phase into secondary **$8 \times 500\ \mu\text{L}$** FluidX storage blocks.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3 p-3 bg-amber-50/20 dark:bg-amber-950/10 rounded-xl border border-amber-100/40">
                                 <div class="flex-1">
                                     <div class="flex justify-between items-start">
-                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">1x SST Serum Tube</p>
-                                        <span class="text-[9px] font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50 px-1.5 py-0.5 rounded border border-amber-200">Serum Matrix</span>
+                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">1x SST Serum Tube (8.5 mL)</p>
+                                        <span class="text-[9px] font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50 px-1.5 py-0.5 rounded border border-amber-200">Tube 5</span>
                                     </div>
-                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Allow 30-minute clotting period upright. Spin down, aliquot fluid into **$8 \times 500\ \mu\text{L}$** FluidX tubes.</p>
+                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Allow 30-minute clotting period upright. Spin down, aliquot serum into **$8 \times 500\ \mu\text{L}$** FluidX tubes.</p>
                                 </div>
                             </div>
                         </div>
@@ -409,10 +428,10 @@
                     <div class="border-t border-slate-100 dark:border-slate-800/80 pt-4">
                         <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">Processing Run-Sheet Checklist</h4>
                         <ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
-                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Monitor 30-minute upright clotting tracker for SST serum collection inputs.</span></li>
-                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Spin down the 5-tube matrix framework using standardized local configuration coefficients.</span></li>
-                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Process and distribute supernatant layout across FluidX 2D barcoded storage blocks.</span></li>
-                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span class="font-bold text-indigo-600 dark:text-indigo-400">Freeze immediately inside local $-80^\circ\text{C}$ lockers. Hold for dry ice batch transport.</span></li>
+                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Monitor 30-minute upright clotting tracker for the SST serum tube.</span></li>
+                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Spin down the complete 5-tube matrix framework within your centrifuge.</span></li>
+                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Process and split plasma/serum outputs across assigned FluidX 2D barcode blocks.</span></li>
+                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span class="font-bold text-indigo-600 dark:text-indigo-400">Freeze immediately inside local $-80^\circ\text{C}$ lockers. Hold for dry ice courier batch transport.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -421,30 +440,30 @@
             <section id="tier-3-card" class="print-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-all duration-300 flex flex-col">
                 <div class="bg-purple-950 text-white p-5 border-b border-purple-900">
                     <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-purple-300">Level 3: Central Hub</span>
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-700 text-purple-100">Full Biobank / PBMCs</span>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-purple-300">Configuration Stack</span>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-purple-700 text-purple-100">5 Tubes + PBMCs</span>
                     </div>
-                    <h3 class="text-2xl font-black text-white mt-1">Tier 3 Site Workflow</h3>
+                    <h3 class="text-2xl font-black text-white mt-1">Tier 3 Full Profile</h3>
                     <div class="mt-2.5 flex flex-wrap gap-1">
-                        <span class="inline-flex items-center gap-1 text-[10px] font-medium text-purple-300 bg-purple-900 px-2 py-0.5 rounded-md border border-purple-500/30">PBMC Processing Suite</span>
+                        <span class="inline-flex items-center gap-1 text-[10px] font-medium text-purple-300 bg-purple-900 px-2 py-0.5 rounded-md border border-purple-500/30">PBMC Isolation Ready</span>
                     </div>
                 </div>
 
                 <div class="p-6 flex-1 space-y-6">
                     <div>
-                        <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">Advanced Isolation Layer</h4>
+                        <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">On-Site Manifest List</h4>
                         <div class="space-y-3">
                             <div class="p-2 bg-slate-50 dark:bg-slate-950 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl text-[10px] flex justify-between items-center text-slate-400 font-bold">
-                                <span>INCLUDES T1 & T2 COLD CHAIN PATHWAYS</span>
+                                <span>PROCESSES ALL 5 STANDARD TUBES (SAME AS TIER 2)</span>
                                 <span class="text-purple-400">✓ Active</span>
                             </div>
                             <div class="flex items-start gap-3 p-3 bg-purple-50/40 dark:bg-purple-950/25 rounded-xl border border-purple-100/40">
                                 <div class="flex-1">
                                     <div class="flex justify-between items-start">
-                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Cellular Fractionation Layer</p>
-                                        <span class="text-[9px] font-bold text-purple-700 dark:text-purple-300 bg-purple-100 dark:bg-purple-950 px-1.5 py-0.5 rounded border border-purple-200">Buffy Coat</span>
+                                        <p class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Lymphocyte Fraction Layer</p>
+                                        <span class="text-[9px] font-bold text-purple-700 dark:text-purple-300 bg-purple-100 dark:bg-purple-950 px-1.5 py-0.5 rounded border border-purple-200">PBMC Core</span>
                                     </div>
-                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Execute specialized density gradient centrifuge profiles (Ficoll matrices) inside laminar hoods to capture the live mononuclear layer.</p>
+                                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Execute specialized density gradient centrifuge profiles (Ficoll matrices) inside laminar hoods to isolate and capture the live mononuclear layer.</p>
                                 </div>
                             </div>
                         </div>
@@ -453,10 +472,10 @@
                     <div class="border-t border-slate-100 dark:border-slate-800/80 pt-4">
                         <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">Processing Run-Sheet Checklist</h4>
                         <ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
-                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Execute full Tier 1 and Tier 2 tracking profiles alongside blood targets.</span></li>
+                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Execute full 5-tube fractionation profile exactly as outlined in Tier 2 lanes.</span></li>
                             <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Run Ficoll-gradient separation cycles within specialized biological safety cabinets.</span></li>
-                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Carefully pipette off the white mononuclear cell layer interface.</span></li>
-                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span class="font-bold text-purple-700 dark:text-purple-400">Cryopreserve fractions step-down style. Retain securely inside local liquid nitrogen containment cells.</span></li>
+                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span>Carefully pipette off the white mononuclear cell layer interface (Buffy coat).</span></li>
+                            <li class="flex items-start gap-2.5"><input type="checkbox" class="mt-0.5 rounded text-indigo-600"> <span class="font-bold text-purple-700 dark:text-purple-400">Cryopreserve cellular fractions. Retain securely inside liquid nitrogen vapor cells.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -629,21 +648,21 @@
                 card3.classList.add('border-purple-600', 'scale-[1.01]', 'shadow-xl');
                 
                 badge.className = "p-3 rounded-xl transition text-xs font-semibold flex items-center gap-2 bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-500/20";
-                badge.innerHTML = `<span class="w-2.5 h-2.5 bg-purple-500 rounded-full shrink-0"></span><span>Active Workstation: <strong>Tier 3 (Cell Separation SOP)</strong></span>`;
+                badge.innerHTML = `<span class="w-2.5 h-2.5 bg-purple-500 rounded-full shrink-0"></span><span>Active Workstation: <strong>Tier 3 Lane (5 Tubes Drawn + PBMCs)</strong></span>`;
             } else if (tierValue === 'Tier 2') {
                 card1.classList.add('opacity-30');
                 card3.classList.add('opacity-30');
                 card2.classList.add('border-indigo-600', 'scale-[1.01]', 'shadow-xl');
                 
                 badge.className = "p-3 rounded-xl transition text-xs font-semibold flex items-center gap-2 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20";
-                badge.innerHTML = `<span class="w-2.5 h-2.5 bg-indigo-500 rounded-full shrink-0"></span><span>Active Workstation: <strong>Tier 2 (Frozen Archive SOP)</strong></span>`;
+                badge.innerHTML = `<span class="w-2.5 h-2.5 bg-indigo-500 rounded-full shrink-0"></span><span>Active Workstation: <strong>Tier 2 Lane (5 Tubes Drawn Total)</strong></span>`;
             } else {
                 card2.classList.add('opacity-30');
                 card3.classList.add('opacity-30');
                 card1.classList.add('border-indigo-600', 'scale-[1.01]', 'shadow-xl');
                 
                 badge.className = "p-3 rounded-xl transition text-xs font-semibold flex items-center gap-2 bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20";
-                badge.innerHTML = `<span class="w-2.5 h-2.5 bg-amber-500 rounded-full shrink-0 animate-pulse"></span><span>Active Workstation: <strong>Tier 1 (Centrifuge & Post SOP)</strong></span>`;
+                badge.innerHTML = `<span class="w-2.5 h-2.5 bg-amber-500 rounded-full shrink-0 animate-pulse"></span><span>Active Workstation: <strong>Tier 1 Lane (3 Tubes Drawn Total)</strong></span>`;
             }
 
             calculateYields();
@@ -660,22 +679,25 @@
 
             const rowExtra = document.getElementById('calc-extra-edta-row');
             const rowSst = document.getElementById('calc-sst-row');
+            const drawnDisplay = document.getElementById('calc-drawn-count');
 
-            document.getElementById('calc-edta').innerText = `${intactEdta} whole tubes`;
+            document.getElementById('calc-edta').innerText = `${intactEdta} tubes`;
             document.getElementById('calc-p100').innerText = `${p100Aliquots} cryovials`;
 
             if (activeLane === 'Tier 1') {
-                // Tier 1 bypasses secondary plasma and serum aliquoting steps on site
+                // Tier 1 draws 3 tubes total and skips secondary plasma and serum separation
+                drawnDisplay.innerText = `${count * 3} blood tubes`;
                 rowExtra.style.display = "none";
                 rowSst.style.display = "none";
-                document.getElementById('calc-total').innerText = `${p100Aliquots} Aliquot Vials`;
+                document.getElementById('calc-total').innerText = `${p100Aliquots} Vials`;
             } else {
-                // Tiers 2 & 3 run complete multi-aliquoting arrays
+                // Tiers 2 & 3 draw all 5 tubes total from the tracking kit configuration
+                drawnDisplay.innerText = `${count * 5} blood tubes`;
                 rowExtra.style.display = "flex";
                 rowSst.style.display = "flex";
-                document.getElementById('calc-extra-edta').innerText = `${extraEdtaAliquots} FluidX vials`;
-                document.getElementById('calc-sst').innerText = `${sstAliquots} FluidX vials`;
-                document.getElementById('calc-total').innerText = `${p100Aliquots + extraEdtaAliquots + sstAliquots} FluidX Vials`;
+                document.getElementById('calc-extra-edta').innerText = `${extraEdtaAliquots} vials`;
+                document.getElementById('calc-sst').innerText = `${sstAliquots} vials`;
+                document.getElementById('calc-total').innerText = `${p100Aliquots + extraEdtaAliquots + sstAliquots} Vials`;
             }
         }
 
